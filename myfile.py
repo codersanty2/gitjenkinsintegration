@@ -1,1 +1,2 @@
-Hello World
+print("Hello Santy")
+print("Hello Jash")
