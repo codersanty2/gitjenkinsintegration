@@ -17,12 +17,10 @@ pipeline {
                 sh 'date >> /tmp/file1.txt'   
             }
         }
-        stage('Make artifacts') {
-            steps { 
-                sh 'make'   
-                archiveArtifacts artifacts: '/tmp/file2', followSymlinks: false
-            }
+        post {
+        always {
+            archiveArtifacts artifacts: '/tmp/file1.txt', fingerprint: true, followSymlinks: false
         }
     }
 }
-
+}
