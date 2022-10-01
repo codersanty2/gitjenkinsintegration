@@ -12,5 +12,17 @@ pipeline {
                 sh 'python3 myfile.py > /tmp/file1.txt'   
             }
         }
+        stage('Add date to the final file') {
+            steps { 
+                sh 'date >> /tmp/file1.txt'   
+            }
+        }
+        stage('Make artifacts') {
+            steps { 
+                sh 'make'   
+                archiveArtifacts artifacts: '/tmp/file2', followSymlinks: false
+            }
+        }
     }
 }
+
